@@ -7,6 +7,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import "MPInterstitialCustomEvent.h"
 
 @protocol MPInterstitialAdControllerDelegate;
 
@@ -262,6 +263,14 @@
  * @param interstitial The interstitial ad object sending the message.
  */
 - (void)interstitialDidExpire:(MPInterstitialAdController *)interstitial;
+
+/**
+ * Sent when a loaded interstitial ad is clicked.
+ *
+ *
+ * @param interstitial The interstitial ad object sending the message.
+ */
+- (void)interstitialWasClicked:(MPInterstitialAdController *)interstitial withCustomEvent:(MPInterstitialCustomEvent *)customEvent;
 
 /*
  * DEPRECATED: This callback notifies you to dismiss the interstitial, and allows you to implement

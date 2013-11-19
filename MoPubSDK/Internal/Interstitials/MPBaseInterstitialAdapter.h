@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "MPInterstitialCustomEvent.h"
 
 @class MPAdConfiguration, CLLocation;
 
@@ -64,5 +65,7 @@
 - (void)interstitialDidDisappearForAdapter:(MPBaseInterstitialAdapter *)adapter;
 - (void)interstitialDidExpireForAdapter:(MPBaseInterstitialAdapter *)adapter;
 - (void)interstitialWillLeaveApplicationForAdapter:(MPBaseInterstitialAdapter *)adapter;
+- (void)interstitialWasClicked:(MPBaseInterstitialAdapter *)adaptor andCustomEvent:(MPInterstitialCustomEvent *)customEvent;
+
 
 @end

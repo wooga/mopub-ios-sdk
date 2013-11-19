@@ -216,6 +216,11 @@
     // TODO: Signal to delegate.
 }
 
+- (void)interstitialWasClicked:(MPBaseInterstitialAdapter *)adaptor andCustomEvent:(MPInterstitialCustomEvent *)customEvent
+{
+    [self.delegate managerWasClickedInterstitial:self andCustomEvent:customEvent];
+}
+
 #pragma mark - Legacy Custom Events
 
 - (void)customEventDidLoadAd

@@ -180,6 +180,13 @@
     }
 }
 
+- (void)managerWasClickedInterstitial:(MPInterstitialAdManager *)manager andCustomEvent:(MPInterstitialCustomEvent *)customEvent
+{
+    if ([self.delegate respondsToSelector:@selector(interstitialWasClicked:withCustomEvent:)]) {
+        [self.delegate interstitialWasClicked:self withCustomEvent:customEvent];
+    }
+}
+
 #pragma mark - Deprecated
 
 + (NSMutableArray *)sharedInterstitialAdControllers

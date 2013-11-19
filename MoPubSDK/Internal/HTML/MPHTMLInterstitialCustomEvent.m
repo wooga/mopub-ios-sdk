@@ -99,4 +99,10 @@
     [self.delegate interstitialCustomEventWillLeaveApplication:self];
 }
 
+- (void)interstitialWasClicked:(MPInterstitialViewController *)interstitial
+{
+    MPLogInfo(@"MoPub HTML interstitial was clicked");
+    [self.delegate interstitialCustomEventDidReceiveTapEvent:self];
+}
+
 @end
