@@ -95,4 +95,9 @@
     [self.delegate interstitialCustomEventWillLeaveApplication:self];
 }
 
+- (void)interstitialWasClicked:(MPInterstitialViewController *)interstitial
+{
+    
+}
+
 @end
