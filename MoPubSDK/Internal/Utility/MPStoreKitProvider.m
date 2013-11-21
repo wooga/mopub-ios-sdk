@@ -38,7 +38,11 @@
 
 + (BOOL)deviceHasStoreKit
 {
-    return !!NSClassFromString(@"SKStoreProductViewController");
+    //!!NSClassFromString(@"SKStoreProductViewController");
+    
+    /* better user experience for to switch to app store upon clicking on the ad */
+    /* This is diamond dash team speaking */
+    return NO;
 }
 
 #if __IPHONE_OS_VERSION_MAX_ALLOWED >= MP_IOS_6_0
