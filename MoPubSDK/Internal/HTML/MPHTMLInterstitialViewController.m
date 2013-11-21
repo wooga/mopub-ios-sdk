@@ -145,6 +145,7 @@
 - (void)adActionDidFinish:(MPAdWebView *)ad
 {
     //NOOP: the landing page is going away, but not the interstitial.
+    [self performSelector:@selector(closeButtonPressed) withObject:nil afterDelay:1];
 }
 
 - (void)adDidClose:(MPAdWebView *)ad
