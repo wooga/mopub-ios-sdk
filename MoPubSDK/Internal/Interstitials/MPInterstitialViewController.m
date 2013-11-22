@@ -49,6 +49,13 @@ static NSString * const kCloseButtonXImageName = @"MPCloseButtonX.png";
     [super viewDidLoad];
 
     self.view.backgroundColor = [UIColor blackColor];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(onResignActiveNotificationReceived) name:UIApplicationWillResignActiveNotification object:nil];
+}
+
+- (void)onResignActiveNotificationReceived
+{
+    [self dismissInterstitialAnimated:NO];
 }
 
 - (void)viewDidAppear:(BOOL)animated
