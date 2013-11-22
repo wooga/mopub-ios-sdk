@@ -184,9 +184,9 @@
     [self loadAdWithURL:self.configuration.failoverURL];
 }
 
-- (void)interstitialWillAppearForAdapter:(MPBaseInterstitialAdapter *)adapter
+- (void)interstitialWillAppearForAdapter:(MPBaseInterstitialAdapter *)adapter andCustomEvent:(MPInterstitialCustomEvent *)customEvent
 {
-    [self.delegate managerWillPresentInterstitial:self];
+    [self.delegate managerWillPresentInterstitial:self withCustomEvent:customEvent];
 }
 
 - (void)interstitialDidAppearForAdapter:(MPBaseInterstitialAdapter *)adapter
@@ -199,10 +199,10 @@
     [self.delegate managerWillDismissInterstitial:self];
 }
 
-- (void)interstitialDidDisappearForAdapter:(MPBaseInterstitialAdapter *)adapter
+- (void)interstitialDidDisappearForAdapter:(MPBaseInterstitialAdapter *)adapter andCustomEvent:(MPInterstitialCustomEvent *)customEvent
 {
     self.ready = NO;
-    [self.delegate managerDidDismissInterstitial:self];
+    [self.delegate managerDidDismissInterstitial:self withCustomEvent:customEvent];
 }
 
 - (void)interstitialDidExpireForAdapter:(MPBaseInterstitialAdapter *)adapter

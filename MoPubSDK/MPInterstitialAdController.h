@@ -217,7 +217,7 @@
  *
  * @param interstitial The interstitial ad object sending the message.
  */
-- (void)interstitialWillAppear:(MPInterstitialAdController *)interstitial;
+- (void)interstitialWillAppear:(MPInterstitialAdController *)interstitial withCustomEvent:(MPInterstitialCustomEvent *)customEvent;;
 
 /**
  * Sent after an interstitial ad object has been presented on the screen.
@@ -244,7 +244,7 @@
  *
  * @param interstitial The interstitial ad object sending the message.
  */
-- (void)interstitialDidDisappear:(MPInterstitialAdController *)interstitial;
+- (void)interstitialDidDisappear:(MPInterstitialAdController *)interstitial withCustomEvent:(MPInterstitialCustomEvent *)customEvent;;
 
 /** @name Detecting When an Interstitial Ad Expires */
 

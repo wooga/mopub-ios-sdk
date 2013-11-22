@@ -19,10 +19,10 @@
 - (void)managerDidLoadInterstitial:(MPInterstitialAdManager *)manager;
 - (void)manager:(MPInterstitialAdManager *)manager
 didFailToLoadInterstitialWithError:(NSError *)error;
-- (void)managerWillPresentInterstitial:(MPInterstitialAdManager *)manager;
+- (void)managerWillPresentInterstitial:(MPInterstitialAdManager *)manager withCustomEvent:(MPInterstitialCustomEvent *)customEvent;
 - (void)managerDidPresentInterstitial:(MPInterstitialAdManager *)manager;
 - (void)managerWillDismissInterstitial:(MPInterstitialAdManager *)manager;
-- (void)managerDidDismissInterstitial:(MPInterstitialAdManager *)manager;
+- (void)managerDidDismissInterstitial:(MPInterstitialAdManager *)manager withCustomEvent:(MPInterstitialCustomEvent *)customEvent;
 - (void)managerDidExpireInterstitial:(MPInterstitialAdManager *)manager;
 - (void)managerWasClickedInterstitial:(MPInterstitialAdManager *)manager andCustomEvent:(MPInterstitialCustomEvent *)customEvent;
 

@@ -145,10 +145,10 @@
     }
 }
 
-- (void)managerWillPresentInterstitial:(MPInterstitialAdManager *)manager
+- (void)managerWillPresentInterstitial:(MPInterstitialAdManager *)manager withCustomEvent:(MPInterstitialCustomEvent *)customEvent
 {
-    if ([self.delegate respondsToSelector:@selector(interstitialWillAppear:)]) {
-        [self.delegate interstitialWillAppear:self];
+    if ([self.delegate respondsToSelector:@selector(interstitialWillAppear:withCustomEvent:)]) {
+        [self.delegate interstitialWillAppear:self withCustomEvent:customEvent];
     }
 }
 
@@ -166,10 +166,10 @@
     }
 }
 
-- (void)managerDidDismissInterstitial:(MPInterstitialAdManager *)manager
+- (void)managerDidDismissInterstitial:(MPInterstitialAdManager *)manager withCustomEvent:(MPInterstitialCustomEvent *)customEvent
 {
-    if ([self.delegate respondsToSelector:@selector(interstitialDidDisappear:)]) {
-        [self.delegate interstitialDidDisappear:self];
+    if ([self.delegate respondsToSelector:@selector(interstitialDidDisappear:withCustomEvent:)]) {
+        [self.delegate interstitialDidDisappear:self withCustomEvent:customEvent];
     }
 }
 

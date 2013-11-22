@@ -59,10 +59,10 @@
 
 - (void)adapterDidFinishLoadingAd:(MPBaseInterstitialAdapter *)adapter;
 - (void)adapter:(MPBaseInterstitialAdapter *)adapter didFailToLoadAdWithError:(NSError *)error;
-- (void)interstitialWillAppearForAdapter:(MPBaseInterstitialAdapter *)adapter;
+- (void)interstitialWillAppearForAdapter:(MPBaseInterstitialAdapter *)adapter andCustomEvent:(MPInterstitialCustomEvent *)customEvent;
 - (void)interstitialDidAppearForAdapter:(MPBaseInterstitialAdapter *)adapter;
 - (void)interstitialWillDisappearForAdapter:(MPBaseInterstitialAdapter *)adapter;
-- (void)interstitialDidDisappearForAdapter:(MPBaseInterstitialAdapter *)adapter;
+- (void)interstitialDidDisappearForAdapter:(MPBaseInterstitialAdapter *)adapter andCustomEvent:(MPInterstitialCustomEvent *)customEvent;
 - (void)interstitialDidExpireForAdapter:(MPBaseInterstitialAdapter *)adapter;
 - (void)interstitialWillLeaveApplicationForAdapter:(MPBaseInterstitialAdapter *)adapter;
 - (void)interstitialWasClicked:(MPBaseInterstitialAdapter *)adaptor andCustomEvent:(MPInterstitialCustomEvent *)customEvent;

@@ -95,7 +95,7 @@
 
 - (void)interstitialCustomEventWillAppear:(MPInterstitialCustomEvent *)customEvent
 {
-    [self.delegate interstitialWillAppearForAdapter:self];
+    [self.delegate interstitialWillAppearForAdapter:self andCustomEvent:customEvent];
 }
 
 - (void)interstitialCustomEventDidAppear:(MPInterstitialCustomEvent *)customEvent
@@ -114,7 +114,7 @@
 
 - (void)interstitialCustomEventDidDisappear:(MPInterstitialCustomEvent *)customEvent
 {
-    [self.delegate interstitialDidDisappearForAdapter:self];
+    [self.delegate interstitialDidDisappearForAdapter:self andCustomEvent:customEvent];
 }
 
 - (void)interstitialCustomEventDidExpire:(MPInterstitialCustomEvent *)customEvent
