@@ -15,6 +15,9 @@
 #import "KIFTestScenario+HTML.h"
 #import "KIFTestScenario+MRAID.h"
 #import "KIFTestScenario+Vungle.h"
+#import "KIFTestScenario+AdColony.h"
+#import "KIFTestScenario+iAd.h"
+#import "MPSampleAppTestScenario.h"
 
 @implementation MPKIFTestController
 
@@ -25,6 +28,8 @@
 
 - (void)initializeScenarios
 {
+//    [self addScenario:[MPSampleAppTestScenario scenarioToWarmUpAdUnits]];
+
     [KIFTestStep setDefaultTimeout:20];
 
     // banners
@@ -38,6 +43,9 @@
     [self addScenario:[KIFTestScenario scenarioForGreystripeBanner]];
     [self addScenario:[KIFTestScenario scenarioForInMobiBanner]];
     [self addScenario:[KIFTestScenario scenarioForHTMLMRectBanner]];
+    [self addScenario:[KIFTestScenario scenarioForMRAIDAdThatTriesToStoreAPictureWithoutUserInteraction]];
+    [self addScenario:[KIFTestScenario scenarioForMRAIDAdThatTriesToPlayAVideoWithoutUserInteraction]];
+    [self addScenario:[KIFTestScenario scenarioForIAdBanner]];
 
     // interstitials
     [self addScenario:[KIFTestScenario scenarioForInterstitialAdWithStoreKitLink]];
@@ -48,9 +56,16 @@
     [self addScenario:[KIFTestScenario scenarioForChartboostInterstitial]];
     [self addScenario:[KIFTestScenario scenarioForMultipleChartboostInterstitials]];
     [self addScenario:[KIFTestScenario scenarioForVungleInterstitial]];
+    [self addScenario:[KIFTestScenario scenarioForAdColonyInterstitial]];
+    [self addScenario:[KIFTestScenario scenarioForMultipleAdColonyInterstitials]];
+    [self addScenario:[KIFTestScenario scenarioForMRAIDInterstitialWithAutoPlayVideo]];
 
-// TODO: Add this scenario again once the MRAID tag is on the front-end and not just local.
-//    [self addScenario:[KIFTestScenario scenarioForMRAIDInterstitialWithVideo]];
+    // XXX jren: this test currently REQUIRES manual action to dismiss the iAd interstitial...uncomment to test
+//    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
+//        [self addScenario:[KIFTestScenario scenarioForIADInterstitial]];
+//    }
 }
+
+
 
 @end

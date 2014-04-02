@@ -34,6 +34,8 @@ NSString * const kMoPubInterfaceOrientationLandscape = @"l";
 + (NSString *)queryParameterForISOCountryCode;
 + (NSString *)queryParameterForMobileNetworkCode;
 + (NSString *)queryParameterForMobileCountryCode;
++ (NSString *)queryParameterForDeviceName;
++ (NSString *)queryParameterForTwitterAvailability;
 + (BOOL)advertisingTrackingEnabled;
 
 @end
@@ -67,6 +69,8 @@ NSString * const kMoPubInterfaceOrientationLandscape = @"l";
     URLString = [URLString stringByAppendingString:[self queryParameterForISOCountryCode]];
     URLString = [URLString stringByAppendingString:[self queryParameterForMobileNetworkCode]];
     URLString = [URLString stringByAppendingString:[self queryParameterForMobileCountryCode]];
+    URLString = [URLString stringByAppendingString:[self queryParameterForDeviceName]];
+    URLString = [URLString stringByAppendingString:[self queryParameterForTwitterAvailability]];
 
     return [NSURL URLWithString:URLString];
 }
@@ -193,6 +197,25 @@ NSString * const kMoPubInterfaceOrientationLandscape = @"l";
 {
     NSString *code = [[[MPInstanceProvider sharedProvider] sharedCarrierInfo] objectForKey:@"mobileCountryCode"];
     return code ? [NSString stringWithFormat:@"&mcc=%@", [code URLEncodedString]] : @"";
+}
+
++ (NSString *)queryParameterForDeviceName
+{
+    NSString *deviceName = [[UIDevice currentDevice] hardwareDeviceName];
+    return deviceName ? [NSString stringWithFormat:@"&dn=%@", [deviceName URLEncodedString]] : @"";
+}
+
++ (NSString *)queryParameterForTwitterAvailability
+{
+    MPTwitterAvailability twitterAvailability = [[MPInstanceProvider sharedProvider] twitterAvailabilityOnDevice];
+    NSString *queryString = @"";
+
+    if (twitterAvailability)
+    {
+        queryString = [NSString stringWithFormat:@"&ts=%u", twitterAvailability];
+    }
+
+    return queryString;
 }
 
 + (BOOL)advertisingTrackingEnabled

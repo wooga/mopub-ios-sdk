@@ -1,3 +1,32 @@
+## Version 1.17 (November 20, 2013)
+
+  - AdColony Custom Event
+    - Supports AdColony as a custom native ad network for interstitial videos. Note that V4VC (virtual currency reward) is currently not supported. 
+  - Handle ISO Latin-1 site encoding in addition to UTF-8
+  - Bug fixes
+
+### Version 1.17.3.0 (March 20th, 2014)
+
+  - Updated Chartboost custom event (Chartboost SDK 4.0+ only)
+  - Bug fixes
+    - Fixed iOS 7 bug where certain interstitial images may fail to load
+
+### Version 1.17.2.0 (February 20th, 2014)
+
+  - Updated InMobi custom events (InMobi SDK 4.0.3+ only)
+  - Bug fixes
+    - MRAID viewable property now correctly updates on app background and resume
+    - MRAID command urls are no longer re-encoded for processing
+
+### Version 1.17.1.0 (January 23rd, 2014)
+
+  - Sample app improvements
+    - Improved manual ad unit entry view
+    - Save manually entered ad unit ids
+    - Ability to enter keywords for each ad unit
+  - Bug fixes
+    - MRAID `isViewable` command now correctly returns a boolean value
+
 ## Version 1.16 (October 15, 2013)
 
   - Creative Controls

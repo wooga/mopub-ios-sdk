@@ -41,11 +41,19 @@
 
 #define MOPUB_CARRIER_INFO_DEFAULTS_KEY @"com.mopub.carrierinfo"
 
+typedef enum
+{
+    MPTwitterDeepLinkNotChecked,
+    MPTwitterDeepLinkEnabled,
+    MPTwitterDeepLinkDisabled
+} MPTwitterDeepLink;
+
 @interface MPInstanceProvider ()
 
 @property (nonatomic, copy) NSString *userAgent;
 @property (nonatomic, retain) NSMutableDictionary *singletons;
 @property (nonatomic, retain) NSMutableDictionary *carrierInfo;
+@property (nonatomic, assign) MPTwitterDeepLink twitterDeepLinkStatus;
 
 @end
 
@@ -54,6 +62,7 @@
 @synthesize userAgent = _userAgent;
 @synthesize singletons = _singletons;
 @synthesize carrierInfo = _carrierInfo;
+@synthesize twitterDeepLinkStatus = _twitterDeepLinkStatus;
 
 static MPInstanceProvider *sharedProvider = nil;
 
@@ -262,6 +271,17 @@ static MPInstanceProvider *sharedProvider = nil;
 
 #pragma mark - MRAID
 
+- (MRAdView *)buildMRAdViewWithFrame:(CGRect)frame
+                     allowsExpansion:(BOOL)allowsExpansion
+                    closeButtonStyle:(MRAdViewCloseButtonStyle)style
+                       placementType:(MRAdViewPlacementType)type
+                            delegate:(id<MRAdViewDelegate>)delegate
+{
+    MRAdView *mrAdView = [[[MRAdView alloc] initWithFrame:frame allowsExpansion:allowsExpansion closeButtonStyle:style placementType:type] autorelease];
+    mrAdView.delegate = delegate;
+    return mrAdView;
+}
+
 - (MRBundleManager *)buildMRBundleManager
 {
     return [MRBundleManager sharedManager];
@@ -385,6 +405,72 @@ static MPInstanceProvider *sharedProvider = nil;
 {
     return [MPTimer timerWithTimeInterval:seconds target:target selector:selector repeats:repeats];
 }
+
+#pragma mark - Twitter Availability
+
+- (void)resetTwitterAppInstallCheck
+{
+    self.twitterDeepLinkStatus = MPTwitterDeepLinkNotChecked;
+}
+
+- (BOOL)isTwitterInstalled
+{
+
+    if (self.twitterDeepLinkStatus == MPTwitterDeepLinkNotChecked)
+    {
+        BOOL twitterDeepLinkEnabled = [[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"twitter://timeline"]];
+        if (twitterDeepLinkEnabled)
+        {
+            self.twitterDeepLinkStatus = MPTwitterDeepLinkEnabled;
+        }
+        else
+        {
+            self.twitterDeepLinkStatus = MPTwitterDeepLinkDisabled;
+        }
+    }
+
+    return (self.twitterDeepLinkStatus == MPTwitterDeepLinkEnabled);
+}
+
++ (BOOL)deviceHasTwitterIntegration
+{
+    return !![MPInstanceProvider tweetComposeVCClass];
+}
+
++ (Class)tweetComposeVCClass
+{
+    return NSClassFromString(@"TWTweetComposeViewController");
+}
+
+- (BOOL)isNativeTwitterAccountPresent
+{
+    BOOL nativeTwitterAccountPresent = NO;
+    if ([MPInstanceProvider deviceHasTwitterIntegration])
+    {
+        nativeTwitterAccountPresent = (BOOL)[[MPInstanceProvider tweetComposeVCClass] performSelector:@selector(canSendTweet)];
+    }
+
+    return nativeTwitterAccountPresent;
+}
+
+- (MPTwitterAvailability)twitterAvailabilityOnDevice
+{
+    MPTwitterAvailability twitterAvailability = MPTwitterAvailabilityNone;
+
+    if ([self isTwitterInstalled])
+    {
+        twitterAvailability |= MPTwitterAvailabilityApp;
+    }
+
+    if ([self isNativeTwitterAccountPresent])
+    {
+        twitterAvailability |= MPTwitterAvailabilityNative;
+    }
+
+    return twitterAvailability;
+}
+
+
 
 @end
 

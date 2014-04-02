@@ -45,6 +45,8 @@
 @protocol MPAdDestinationDisplayAgentDelegate;
 
 // MRAID
+@class MRAdView;
+@protocol MRAdViewDelegate;
 @class MRBundleManager;
 @class MRJavaScriptEventEmitter;
 @class MRCalendarManager;
@@ -67,6 +69,12 @@
 @class MPMoviePlayerViewController;
 
 typedef id(^MPSingletonProviderBlock)();
+
+typedef enum {
+    MPTwitterAvailabilityNone = 0,
+    MPTwitterAvailabilityApp = 1 << 0,
+    MPTwitterAvailabilityNative = 1 << 1,
+} MPTwitterAvailability;
 
 @interface MPInstanceProvider : NSObject
 
@@ -108,6 +116,11 @@ typedef id(^MPSingletonProviderBlock)();
 - (MPAdDestinationDisplayAgent *)buildMPAdDestinationDisplayAgentWithDelegate:(id<MPAdDestinationDisplayAgentDelegate>)delegate;
 
 #pragma mark - MRAID
+- (MRAdView *)buildMRAdViewWithFrame:(CGRect)frame
+                     allowsExpansion:(BOOL)allowsExpansion
+                    closeButtonStyle:(NSUInteger)style
+                       placementType:(NSUInteger)type
+                            delegate:(id<MRAdViewDelegate>)delegate;
 - (MRBundleManager *)buildMRBundleManager;
 - (UIWebView *)buildUIWebViewWithFrame:(CGRect)frame;
 - (MRJavaScriptEventEmitter *)buildMRJavaScriptEventEmitterWithWebView:(UIWebView *)webView;
@@ -130,5 +143,8 @@ typedef id(^MPSingletonProviderBlock)();
 - (NSDictionary *)sharedCarrierInfo;
 
 - (MPTimer *)buildMPTimerWithTimeInterval:(NSTimeInterval)seconds target:(id)target selector:(SEL)selector repeats:(BOOL)repeats;
+
+- (MPTwitterAvailability)twitterAvailabilityOnDevice;
+- (void)resetTwitterAppInstallCheck;
 
 @end
