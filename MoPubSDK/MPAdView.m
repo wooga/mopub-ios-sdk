@@ -33,7 +33,9 @@
     if (self = [super initWithFrame:f])
     {
         self.backgroundColor = [UIColor clearColor];
-        self.clipsToBounds = YES;
+        self.opaque = NO;
+        self.autoresizesSubviews = NO;
+        self.clipsToBounds = NO;
         self.originalSize = size;
         self.allowedNativeAdOrientation = MPNativeAdOrientationAny;
         self.adUnitId = (adUnitId) ? adUnitId : DEFAULT_PUB_ID;
@@ -64,7 +66,7 @@
 - (CGSize)adContentViewSize
 {
     // MPClosableView represents an MRAID ad.
-    if (!self.adContentView || [self.adContentView isKindOfClass:[MPClosableView class]]) {
+    if (!self.adContentView) {
         return self.originalSize;
     } else {
         return self.adContentView.bounds.size;

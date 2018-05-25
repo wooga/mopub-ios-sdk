@@ -28,6 +28,7 @@
 #import "MPViewabilityTracker.h"
 #import "MPHTTPNetworkSession.h"
 #import "MPURLRequest.h"
+#import "UIViewController+PresentTransparent.h"
 
 static const NSTimeInterval kAdPropertyUpdateTimerInterval = 1.0;
 static const NSTimeInterval kMRAIDResizeAnimationTimeInterval = 0.3;
@@ -491,7 +492,7 @@ static NSString *const kMRAIDCommandResize = @"resize";
     self.expandModalViewController.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
     [self.expandModalViewController hideStatusBar];
 
-    [[self.delegate viewControllerForPresentingModalView] presentViewController:self.expandModalViewController
+    [[self.delegate viewControllerForPresentingModalView] presentTransparentViewController:self.expandModalViewController
                                                                        animated:animated
                                                                      completion:^{
                                                                          self.currentInterfaceOrientation = MPInterfaceOrientation();

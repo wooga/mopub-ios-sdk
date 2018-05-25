@@ -36,7 +36,8 @@
 {
     [super viewDidLoad];
 
-    self.view.backgroundColor = [UIColor blackColor];
+    self.view.backgroundColor = [UIColor clearColor];
+    self.view.opaque = NO;
     self.backingViewAgent = [[MPInstanceProvider sharedProvider] buildMPAdWebViewAgentWithAdWebViewFrame:self.view.bounds
                                                                                                 delegate:self];
 }
@@ -49,6 +50,8 @@
     [self.backingViewAgent loadConfiguration:configuration];
 
     self.backingView = self.backingViewAgent.view;
+    self.backingView.backgroundColor = [UIColor clearColor];
+    self.backingView.opaque = NO;
     [self.view addSubview:self.backingView];
     self.backingView.frame = self.view.bounds;
     self.backingView.autoresizingMask = UIViewAutoresizingFlexibleWidth |
@@ -68,7 +71,6 @@
 
 - (void)willPresentInterstitial
 {
-    self.backingView.alpha = 0.0;
     [self.delegate interstitialWillAppear:self];
 }
 
@@ -84,7 +86,6 @@
 
     [UIView beginAnimations:nil context:nil];
     [UIView setAnimationDuration:0.3];
-    self.backingView.alpha = 1.0;
     [UIView commitAnimations];
 
     [self.delegate interstitialDidAppear:self];
