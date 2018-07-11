@@ -10,6 +10,7 @@
 #import "MPGlobal.h"
 #import "MPLogging.h"
 #import "UIButton+MPAdditions.h"
+#import "UIViewController+PresentTransparent.h"
 
 static const CGFloat kCloseButtonPadding = 5.0;
 static const CGFloat kCloseButtonEdgeInset = 5.0;
@@ -42,7 +43,8 @@ static NSString * const kCloseButtonXImageName = @"MPCloseButtonX.png";
 {
     [super viewDidLoad];
 
-    self.view.backgroundColor = [UIColor blackColor];
+    self.view.backgroundColor = [UIColor clearColor];
+    self.view.opaque = NO;
 }
 
 - (BOOL)prefersHomeIndicatorAutoHidden {
@@ -65,7 +67,7 @@ static NSString * const kCloseButtonXImageName = @"MPCloseButtonX.png";
 
     [self layoutCloseButton];
 
-    [controller presentViewController:self animated:MP_ANIMATED completion:^{
+    [controller presentTransparentViewController:self animated:MP_ANIMATED completion:^{
         [self didPresentInterstitial];
     }];
 }

@@ -31,7 +31,8 @@
 {
     [super viewDidLoad];
 
-    self.view.backgroundColor = [UIColor blackColor];
+    self.view.backgroundColor = [UIColor clearColor];
+    self.view.opaque = NO;    
 }
 
 - (void)hideStatusBar

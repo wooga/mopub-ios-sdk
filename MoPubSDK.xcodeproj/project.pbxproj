@@ -811,6 +811,7 @@
 		BCFE67DA208508D3005E458A /* MPConsentChangedReason.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFE67D8208508D3005E458A /* MPConsentChangedReason.m */; };
 		BCFE67DB208508D3005E458A /* MPConsentChangedReason.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFE67D8208508D3005E458A /* MPConsentChangedReason.m */; };
 		BCFE67DC208508D3005E458A /* MPConsentChangedReason.m in Sources */ = {isa = PBXBuildFile; fileRef = BCFE67D8208508D3005E458A /* MPConsentChangedReason.m */; };
+		C4D986DD20B6F5C500F58552 /* UIViewController+PresentTransparent.m in Sources */ = {isa = PBXBuildFile; fileRef = C4D986DC20B6F5C500F58552 /* UIViewController+PresentTransparent.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -1408,6 +1409,8 @@
 		BCF2F1B8206317B500DAF66E /* MPAdServerURLBuilder+Testing.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MPAdServerURLBuilder+Testing.m"; sourceTree = "<group>"; };
 		BCFE67D7208508D3005E458A /* MPConsentChangedReason.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MPConsentChangedReason.h; sourceTree = "<group>"; };
 		BCFE67D8208508D3005E458A /* MPConsentChangedReason.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MPConsentChangedReason.m; sourceTree = "<group>"; };
+		C4D986DB20B6F5C500F58552 /* UIViewController+PresentTransparent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+PresentTransparent.h"; sourceTree = "<group>"; };
+		C4D986DC20B6F5C500F58552 /* UIViewController+PresentTransparent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+PresentTransparent.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1894,6 +1897,8 @@
 				AEF9D53B171CA895005AAA5A /* Resources */,
 				57ACE3ED1AA7E8D900A05633 /* RewardedVideo */,
 				2A7F96CF1E6640DB00114565 /* Viewability */,
+				C4D986DB20B6F5C500F58552 /* UIViewController+PresentTransparent.h */,
+				C4D986DC20B6F5C500F58552 /* UIViewController+PresentTransparent.m */,
 			);
 			path = MoPubSDK;
 			sourceTree = "<group>";
@@ -3193,6 +3198,7 @@
 				AE14FA4C1774D95D00ABF744 /* MPLastResortDelegate.m in Sources */,
 				57AC69561BB21FA20053C556 /* MOPUBNativeVideoAdConfigValues.m in Sources */,
 				AEAFC85F1798615C007F5911 /* MRBundleManager.m in Sources */,
+				C4D986DD20B6F5C500F58552 /* UIViewController+PresentTransparent.m in Sources */,
 				A7A422981B603CB400024A3A /* MPVASTModel.m in Sources */,
 				A77FBEF418C533B400531E8A /* MPNativeAd.m in Sources */,
 				2A5275B91FCE1FCF00FF39D5 /* MPAdImpressionTimer.m in Sources */,
