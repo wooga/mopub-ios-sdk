@@ -102,19 +102,22 @@ NS_ASSUME_NONNULL_BEGIN
         return json;
     }
 
-    // Iterate over every query parameter and rationalize them into
-    // the JSON dictionary.
-    for (NSURLQueryItem * queryItem in components.queryItems) {
-        NSString * key = queryItem.name;
-        NSString * decodedValue = [queryItem.value stringByRemovingPercentEncoding];
-        decodedValue = decodedValue != nil ? decodedValue : @"";
+    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
+    {
+        // Iterate over every query parameter and rationalize them into
+        // the JSON dictionary.
+        for (NSURLQueryItem * queryItem in components.queryItems) {
+            NSString * key = queryItem.name;
+            NSString * decodedValue = [queryItem.value stringByRemovingPercentEncoding];
+            decodedValue = decodedValue != nil ? decodedValue : @"";
 
-        if ([json objectForKey:key] != nil) {
-            json[key] = [@[json[key], decodedValue] componentsJoinedByString:@","];
-        }
-        // Key doesn't exist; add it.
-        else {
-            json[key] = decodedValue;
+            if ([json objectForKey:key] != nil) {
+                json[key] = [@[json[key], decodedValue] componentsJoinedByString:@","];
+            }
+            // Key doesn't exist; add it.
+            else {
+                json[key] = decodedValue;
+            }
         }
     }
 
